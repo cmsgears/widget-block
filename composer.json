@@ -1,0 +1,19 @@
+{
+	"name": "cmsgears/widget-block",
+	"description": "The Dynamic Block Widget for CMSGears. It provide options to generate blocks stored in db.",
+	"homepage": "http://www.cmsgears.org",
+	"type": "package",
+	"keywords": [ "yii", "yii2", "cmsgears", "widget", "block" ],
+	"license": "GPLv3",
+	"support": {
+		"resources": "http://www.cmsgears.org"
+	},
+	"autoload": {
+		"psr-4": {
+			"cmsgears\\widgets\\block\\": ""
+		}
+	},
+    "require": {
+        "cmsgears/module-core": "*"
+    }
+}
