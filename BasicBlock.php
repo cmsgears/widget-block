@@ -10,18 +10,36 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 	// Variables ---------------------------------------------------
 
 	// Public Variables --------------------
-
+	
+	// Background
 	public $bkg					= false;
 	public $fixedBkg			= false;
 	public $scrollBkg			= false;
 	public $parallaxBkg			= false;
 	public $bkgUrl				= null;
+	public $bkgClass			= null;
+	
+	// Texture
 	public $texture				= false;
-	public $textureClass		= '';
+	public $textureUrl			= null;
+	public $textureClass		= null;
+	
+	// Block to cover whole area
+	public $maxCover			= false;
+	public $maxCoverContent		= null;
+	public $maxCoverClass		= null;
+
+	// Block Header
+	public $header				= false;
 	public $headerContent		= null;
-	public $headerClass			= '';
-	public $content				= null;
+	public $headerClass			= null;
+
+	// Block Content
+	public $content				= false;
+	public $contentData			= null;
 	public $contentClass		= '';
+
+	// Additional content placed below content box
 	public $extraContent		= null;
 
 	// Constructor and Initialisation ------------------------------
@@ -62,11 +80,18 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 			'scrollBkg' => $this->scrollBkg,
 			'parallaxBkg' => $this->parallaxBkg,
 			'bkgUrl' => $this->bkgUrl,
+			'bkgClass' => $this->bkgClass,
 			'texture' => $this->texture,
+			'textureUrl' => $this->textureUrl,
 			'textureClass' => $this->textureClass,
+			'maxCover' => $this->maxCover,
+			'maxCoverContent' => $this->maxCoverContent,
+			'maxCoverClass' => $this->maxCoverClass,
+			'header' => $this->header,
 			'headerContent' => $this->headerContent,
 			'headerClass' => $this->headerClass,
 			'content' => $this->content,
+			'contentData' => $this->contentData,
 			'contentClass' => $this->contentClass,
 			'extraContent' => $this->extraContent
 		]);

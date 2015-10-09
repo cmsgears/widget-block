@@ -1,30 +1,40 @@
+<!-- Block Background -->
 <?php if( $bkg ) { ?>
-	<div class='block-bkg' <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>></div>
+	<div class='block-bkg <?=bkgClass?>' <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>></div>
 <?php } ?>
 
 <?php if( $fixedBkg ) { ?>
-	<div class='block-bkg-fixed <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>'></div>
+	<div class='block-bkg-fixed <?=bkgClass?>' <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>'></div>
 <?php } ?>
 
 <?php if( $scrollBkg ) { ?>
-	<div class='block-bkg-scroll <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>'></div>
+	<div class='block-bkg-scroll <?=bkgClass?>' <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>'></div>
 <?php } ?>
 
 <?php if( $parallaxBkg ) { ?>
-	<div class='block-bkg-parallax <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>'></div>
+	<div class='block-bkg-parallax <?=bkgClass?>' <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>'></div>
 <?php } ?>
 
+<!-- Block Texture -->
 <?php if( $texture ) { ?>
-	<div class='texture <?=$textureClass?>'></div>
+	<div class='texture <?=$textureClass?>' <?php if( isset( $textureUrl ) ) echo "style='background-image:url($textureUrl);'"?>'></div>
 <?php } ?>
 
+<!-- Block Max Cover -->
+<?php if( $maxCover ) { ?>
+	<div class='max-cover <?=$maxCoverClass?>'><?=$maxCoverContent?></div>
+<?php } ?>
+
+<!-- Content Wrapper -->
 <div class="block-wrap-content">
-	<?php if( isset( $headerContent ) ) { ?>
+	
+	<!-- Content Header -->
+	<?php if( $header ) { ?>
 		<div class='block-header <?=$headerClass?>'><?=$headerContent?></div>
 	<?php } ?>
 
 	<?php if( isset( $content ) ) { ?>
-		<div class='block-content <?=$contentClass?>'><?=$content?></div>
+		<div class='block-content <?=$contentClass?>'><?=$contentData?></div>
 	<?php } ?>
 
 	<?php if( isset( $extraContent ) ) { ?>
