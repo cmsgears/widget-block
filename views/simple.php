@@ -1,3 +1,7 @@
+<?php
+use cmsgears\core\common\utilities\CodeGenUtil;
+?>
+
 <!-- Block Background -->
 <?php if( $bkg ) { ?>
 	<div class='block-bkg <?=bkgClass?>' <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>></div>
@@ -17,7 +21,7 @@
 
 <!-- Block Texture -->
 <?php if( $texture ) { ?>
-	<div class='texture <?=$textureClass?>' <?php if( isset( $textureUrl ) ) echo "style='background-image:url($textureUrl);'"?>'></div>
+	<div class='texture <?=$textureClass?>' <?php if( isset( $textureUrl ) ) echo "style='background-image:url($textureUrl);'"?>></div>
 <?php } ?>
 
 <!-- Block Max Cover -->
