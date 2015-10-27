@@ -35,6 +35,7 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 	public $headerClass			= null;
 
 	// Block Content
+	public $contentWrapClass	= null;
 	public $content				= false;
 	public $contentData			= null;
 	public $contentClass		= '';
@@ -71,7 +72,7 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 
 		if( isset( $content ) && strlen( $content ) > 0 ) {
 
-			$this->content = $content;
+			$this->contentData = $content;
 		}
 
 		$widgetHtml = $this->render( $this->viewFile, [
@@ -90,6 +91,7 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 			'header' => $this->header,
 			'headerContent' => $this->headerContent,
 			'headerClass' => $this->headerClass,
+			'contentWrapClass' => $this->contentWrapClass,
 			'content' => $this->content,
 			'contentData' => $this->contentData,
 			'contentClass' => $this->contentClass,
