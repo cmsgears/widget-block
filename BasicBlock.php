@@ -75,7 +75,7 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 			$this->contentData = $content;
 		}
 
-		$widgetHtml = $this->render( $this->viewFile, [
+		$widgetHtml = $this->render( $this->template, [
 			'bkg' => $this->bkg,
 			'fixedBkg' => $this->fixedBkg,
 			'scrollBkg' => $this->scrollBkg,
