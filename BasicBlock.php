@@ -75,6 +75,12 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 			$this->contentData = $content;
 		}
 
+		// Default background class defined in css as - .bkg-block { background-image: url(<image url>) }
+		if( $this->bkg && !isset( $this->bkgUrl ) && !isset( $this->bkgClass ) ) {
+
+			$this->bkgClass	= 'bkg-block';
+		}
+
 		$widgetHtml = $this->render( $this->template, [
 			'bkg' => $this->bkg,
 			'fixedBkg' => $this->fixedBkg,
