@@ -63,16 +63,16 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 
 		$content = ob_get_clean();
 
-        return $this->renderBlock( $content );
+        return $this->renderWidget( [ 'content' => $content ] );
     }
 
 	// BasicBlock
 
-    public function renderBlock( $content = null ) {
+    public function renderWidget( $config = [] ) {
 
-		if( isset( $content ) && strlen( $content ) > 0 ) {
+		if( isset( $config[ 'content' ] ) && strlen( $config[ 'content' ] ) > 0 ) {
 
-			$this->contentData = $content;
+			$this->contentData = $config[ 'content' ];
 		}
 
 		// Default background class defined in css as - .bkg-block { background-image: url(<image url>) }
