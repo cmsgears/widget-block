@@ -10,7 +10,7 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 	// Variables ---------------------------------------------------
 
 	// Public Variables --------------------
-	
+
 	// Background
 	public $bkg					= false;
 	public $fixedBkg			= false;
@@ -18,16 +18,21 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 	public $parallaxBkg			= false;
 	public $bkgUrl				= null;
 	public $bkgClass			= null;
-	
+
 	// Texture
 	public $texture				= false;
 	public $textureUrl			= null;
 	public $textureClass		= null;
-	
+
 	// Block to cover whole area
 	public $maxCover			= false;
 	public $maxCoverContent		= null;
 	public $maxCoverClass		= null;
+
+	// Block Header
+	public $icon				= false;
+	public $iconClass			= null;
+	public $iconImage			= null;
 
 	// Block Header
 	public $header				= false;
@@ -35,6 +40,8 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 	public $headerClass			= null;
 
 	// Block Content
+	public $title				= null;
+	public $description			= null;
 	public $contentWrapClass	= null;
 	public $content				= false;
 	public $contentData			= null;
@@ -81,28 +88,7 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 			$this->bkgClass	= 'bkg-block';
 		}
 
-		$widgetHtml = $this->render( $this->template, [
-			'bkg' => $this->bkg,
-			'fixedBkg' => $this->fixedBkg,
-			'scrollBkg' => $this->scrollBkg,
-			'parallaxBkg' => $this->parallaxBkg,
-			'bkgUrl' => $this->bkgUrl,
-			'bkgClass' => $this->bkgClass,
-			'texture' => $this->texture,
-			'textureUrl' => $this->textureUrl,
-			'textureClass' => $this->textureClass,
-			'maxCover' => $this->maxCover,
-			'maxCoverContent' => $this->maxCoverContent,
-			'maxCoverClass' => $this->maxCoverClass,
-			'header' => $this->header,
-			'headerContent' => $this->headerContent,
-			'headerClass' => $this->headerClass,
-			'contentWrapClass' => $this->contentWrapClass,
-			'content' => $this->content,
-			'contentData' => $this->contentData,
-			'contentClass' => $this->contentClass,
-			'extraContent' => $this->extraContent
-		]);
+		$widgetHtml = $this->render( $this->template, [ 'widget' => $this ] );
 
         return Html::tag( 'section', $widgetHtml, $this->options );
     }
