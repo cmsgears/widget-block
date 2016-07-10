@@ -9,7 +9,17 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 
 	// Variables ---------------------------------------------------
 
-	// Public Variables --------------------
+	// Globals -------------------------------
+
+	// Constants --------------
+
+	// Public -----------------
+
+	// Protected --------------
+
+	// Variables -----------------------------
+
+	// Public -----------------
 
 	// Background
 	public $bkg					= false;
@@ -50,9 +60,13 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 	// Additional content placed below content box
 	public $extraContent		= null;
 
-	// Constructor and Initialisation ------------------------------
+	// Protected --------------
 
-	// yii\base\Object
+	// Private ----------------
+
+	// Traits ------------------------------------------------------
+
+	// Constructor and Initialisation ------------------------------
 
     public function init() {
 
@@ -62,7 +76,11 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 		ob_start();
     }
 
-	// Instance Methods --------------------------------------------
+	// Instance methods --------------------------------------------
+
+	// Yii interfaces ------------------------
+
+	// Yii parent classes --------------------
 
 	// yii\base\Widget
 
@@ -73,7 +91,9 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
         return $this->renderWidget( [ 'content' => $content ] );
     }
 
-	// BasicBlock
+	// CMG interfaces ------------------------
+
+	// CMG parent classes --------------------
 
     public function renderWidget( $config = [] ) {
 
@@ -92,6 +112,7 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 
         return Html::tag( 'section', $widgetHtml, $this->options );
     }
-}
 
-?>
+	// BasicBlock ----------------------------
+
+}
