@@ -1,6 +1,6 @@
 {
 	"name": "cmsgears/widget-block",
-	"description": "The Dynamic Block Widget for CMSGears. It provide options to generate blocks stored in db.",
+	"description": "The Block Widget for CMSGears. It provide options to generate blocks.",
 	"homepage": "http://www.cmsgears.org",
 	"type": "package",
 	"keywords": [ "yii", "yii2", "cmsgears", "widget", "block" ],

@@ -3,45 +3,55 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 ?>
 
 <!-- Block Background -->
-<?php if( $bkg ) { ?>
-	<div class='block-bkg <?=$bkgClass?>' <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>></div>
+<?php if( $widget->bkg ) { ?>
+	<div class='block-bkg <?= $widget->bkgClass ?>' <?php if( isset( $widget->bkgUrl ) ) echo "style='background-image:url($widget->bkgUrl);'" ?>></div>
 <?php } ?>
 
-<?php if( $fixedBkg ) { ?>
-	<div class='block-bkg-fixed <?=$bkgClass?>' <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>></div>
+<?php if( $widget->fixedBkg ) { ?>
+	<div class='block-bkg-fixed <?= $widget->bkgClass ?>' <?php if( isset( $widget->bkgUrl ) ) echo "style='background-image:url($widget->bkgUrl);'" ?>></div>
 <?php } ?>
 
-<?php if( $scrollBkg ) { ?>
-	<div class='block-bkg-scroll <?=$bkgClass?>' <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>></div>
+<?php if( $widget->scrollBkg ) { ?>
+	<div class='block-bkg-scroll <?= $widget->bkgClass ?>' <?php if( isset( $widget->bkgUrl ) ) echo "style='background-image:url($widget->bkgUrl);'" ?>></div>
 <?php } ?>
 
-<?php if( $parallaxBkg ) { ?>
-	<div class='block-bkg-parallax <?=$bkgClass?>' <?php if( isset( $bkgUrl ) ) echo "style='background-image:url($bkgUrl);'"?>></div>
+<?php if( $widget->parallaxBkg ) { ?>
+	<div class='block-bkg-parallax <?= $widget->bkgClass ?>' <?php if( isset( $widget->bkgUrl ) ) echo "style='background-image:url($widget->bkgUrl);'" ?>></div>
 <?php } ?>
 
 <!-- Block Texture -->
-<?php if( $texture ) { ?>
-	<div class='texture <?=$textureClass?>' <?php if( isset( $textureUrl ) ) echo "style='background-image:url($textureUrl);'"?>></div>
+<?php if( $widget->texture ) { ?>
+	<div class='texture <?= $widget->textureClass ?>' <?php if( isset( $widget->textureUrl ) ) echo "style='background-image:url($widget->textureUrl);'" ?>></div>
 <?php } ?>
 
 <!-- Block Max Cover -->
-<?php if( $maxCover ) { ?>
-	<div class='max-cover <?=$maxCoverClass?>'><?=$maxCoverContent?></div>
+<?php if( $widget->maxCover ) { ?>
+	<div class='max-cover <?= $widget->maxCoverClass ?>'><?= $widget->maxCoverContent ?></div>
 <?php } ?>
 
 <!-- Content Wrapper -->
-<div class="block-wrap-content <?=$contentWrapClass?>">
-	
+<div class="block-wrap-content <?= $widget->contentWrapClass ?>">
+
 	<!-- Content Header -->
-	<?php if( $header ) { ?>
-		<div class='block-header <?=$headerClass?>'><?=$headerContent?></div>
+	<?php if( $widget->header ) { ?>
+		<div class='block-header <?=  $widget->headerClass ?>'>
+			<?php if( $widget->icon && strlen( $widget->iconClass ) > 0 ) { ?>
+				<div class='wrap-icon'><i class='<?= $widget->iconClass ?>'></i></div>
+			<?php } ?>
+			<?php if( $widget->icon && strlen( $widget->iconImage ) > 0 ) { ?>
+				<div class='wrap-icon'><img src='<?= $widget->iconImage ?>' /></div>
+			<?php } ?>
+			<div class='content-header'><?= $widget->headerContent ?></div>
+		</div>
 	<?php } ?>
 
-	<?php if( isset( $content ) ) { ?>
-		<div class='block-content <?=$contentClass?>'><?=$contentData?></div>
+	<?php if( isset( $widget->content ) ) { ?>
+		<div class='block-content <?= $widget->contentClass ?>'>
+			<?= $widget->contentData ?>
+		</div>
 	<?php } ?>
 
-	<?php if( isset( $extraContent ) ) { ?>
-		<?=$extraContent?>
+	<?php if( isset( $widget->extraContent ) ) { ?>
+		<?= $widget->extraContent ?>
 	<?php } ?>
 </div>
