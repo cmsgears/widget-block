@@ -73,7 +73,9 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
         parent::init();
 
 		// Required in case content is generated manually
-		ob_start();
+        ob_start();
+
+        ob_implicit_flush( false );
     }
 
 	// Instance methods --------------------------------------------
@@ -88,6 +90,13 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 
 		$content = ob_get_clean();
 
+		if( $this->autoload ) {
+
+			// Render autoload widget
+			return $this->renderAutoload( [ 'content' => $content ] );
+		}
+
+		// Render the widget
         return $this->renderWidget( [ 'content' => $content ] );
     }
 
@@ -112,6 +121,11 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 
         return Html::tag( 'section', $widgetHtml, $this->options );
     }
+
+	public function renderAutoload( $config = [] ) {
+
+		return $this->render( "$this->template/autoload", [ 'widget' => $this, 'content' => $config[ 'content' ] ] );
+	}
 
 	// BasicBlock ----------------------------
 
