@@ -30,7 +30,7 @@ use cmsgears\core\common\utilities\CodeGenUtil;
 <?php } ?>
 
 <!-- Content Wrapper -->
-<div class="block-wrap-content <?= $widget->contentWrapClass ?>">
+<div class="block-content-wrap <?= $widget->contentWrapClass ?>">
 
 	<!-- Content Header -->
 	<?php if( $widget->header ) { ?>
