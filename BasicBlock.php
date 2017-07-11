@@ -2,7 +2,6 @@
 namespace cmsgears\widgets\block;
 
 // Yii Imports
-use \Yii;
 use yii\helpers\Html;
 
 class BasicBlock extends \cmsgears\core\common\base\Widget {
