@@ -1,10 +1,26 @@
 <?php
+/**
+ * This file is part of CMSGears Framework. Please view License file distributed
+ * with the source code for license details.
+ *
+ * @link https://www.cmsgears.org/
+ * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
+ */
+
 namespace cmsgears\widgets\block;
 
 // Yii Imports
 use yii\helpers\Html;
 
-class BasicBlock extends \cmsgears\core\common\base\Widget {
+// CMG Imports
+use cmsgears\core\common\base\Widget;
+
+/**
+ * Block forms a part of page either vertically or horizontally.
+ *
+ * @since 1.0.0
+ */
+class Block extends Widget {
 
 	// Variables ---------------------------------------------------
 
@@ -126,6 +142,6 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 		return $this->render( "$this->template/autoload", [ 'widget' => $this, 'content' => $config[ 'content' ] ] );
 	}
 
-	// BasicBlock ----------------------------
+	// Block ---------------------------------
 
 }
