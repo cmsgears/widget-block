@@ -20,7 +20,7 @@ use cmsgears\core\common\base\Widget;
  *
  * @since 1.0.0
  */
-class Block extends Widget {
+class BasicBlock extends Widget {
 
 	// Variables ---------------------------------------------------
 
