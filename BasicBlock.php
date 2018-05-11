@@ -36,44 +36,48 @@ class BasicBlock extends Widget {
 
 	// Public -----------------
 
+	public $wrap	= true;
+	public $options = [ 'class' => 'block' ];
+	public $buffer	= true;
+
 	// Background
-	public $bkg					= false;
-	public $fixedBkg			= false;
-	public $scrollBkg			= false;
-	public $parallaxBkg			= false;
-	public $bkgUrl				= null;
-	public $bkgClass			= null;
+	public $bkg			= false;
+	public $fixedBkg	= false;
+	public $scrollBkg	= false;
+	public $parallaxBkg	= false;
+	public $bkgUrl		= null;
+	public $bkgClass	= null;
 
 	// Texture
-	public $texture				= false;
-	public $textureUrl			= null;
-	public $textureClass		= null;
+	public $texture			= false;
+	public $textureClass	= null;
 
-	// Block to cover whole area
-	public $maxCover			= false;
-	public $maxCoverContent		= null;
-	public $maxCoverClass		= null;
-
-	// Block Header
-	public $icon				= false;
-	public $iconClass			= null;
-	public $iconImage			= null;
+	// Max cover on top of block content
+	public $maxCover		= false;
+	public $maxCoverContent	= null;
+	public $maxCoverClass	= null;
 
 	// Block Header
-	public $header				= false;
-	public $headerContent		= null;
-	public $headerClass			= null;
+	public $header			= false;
+	public $headerIcon		= false;
+	public $headerIconClass	= null;
+	public $headerIconUrl	= null;
+	public $headerTitle		= null;
+	public $headerInfo		= null;
+	public $headerContent	= null;
 
 	// Block Content
-	public $title				= null;
-	public $description			= null;
-	public $contentWrapClass	= null;
-	public $content				= false;
-	public $contentData			= null;
-	public $contentClass		= '';
+	public $content		= false;
+	public $contentData	= '';
 
-	// Additional content placed below content box
-	public $extraContent		= null;
+	// Block Footer
+	public $footer			= false;
+	public $footerIcon		= false;
+	public $footerIconClass	= null;
+	public $footerIconUrl	= null;
+	public $footerTitle		= null;
+	public $footerInfo		= null;
+	public $footerContent	= null;
 
 	// Protected --------------
 
@@ -99,32 +103,11 @@ class BasicBlock extends Widget {
 
 	// Yii parent classes --------------------
 
-	// yii\base\Widget
-
-    public function run() {
-
-		$content = ob_get_clean();
-
-		if( $this->autoload ) {
-
-			// Render autoload widget
-			return $this->renderAutoload( [ 'content' => $content ] );
-		}
-
-		// Render the widget
-        return $this->renderWidget( [ 'content' => $content ] );
-    }
-
 	// CMG interfaces ------------------------
 
 	// CMG parent classes --------------------
 
     public function renderWidget( $config = [] ) {
-
-		if( isset( $config[ 'content' ] ) && strlen( $config[ 'content' ] ) > 0 ) {
-
-			$this->contentData = $config[ 'content' ];
-		}
 
 		// Default background class defined in css as - .bkg-block { background-image: url(<image url>) }
 		if( $this->bkg && !isset( $this->bkgUrl ) && !isset( $this->bkgClass ) ) {
@@ -134,7 +117,13 @@ class BasicBlock extends Widget {
 
 		$widgetHtml = $this->render( $this->template, [ 'widget' => $this ] );
 
-        return Html::tag( 'section', $widgetHtml, $this->options );
+		// Wrap the view
+		if( $this->wrap ) {
+
+			return Html::tag( $this->wrapper, $widgetHtml, $this->options );
+		}
+
+		return $widgetHtml;
     }
 
 	public function renderAutoload( $config = [] ) {
@@ -142,6 +131,6 @@ class BasicBlock extends Widget {
 		return $this->render( "$this->template/autoload", [ 'widget' => $this, 'content' => $config[ 'content' ] ] );
 	}
 
-	// Block ---------------------------------
+	// BasicBlock ----------------------------
 
 }
