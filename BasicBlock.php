@@ -69,6 +69,7 @@ class BasicBlock extends Widget {
 	// Block Content
 	public $content		= false;
 	public $contentData	= '';
+	public $contentClass		= '';
 
 	// Block Footer
 	public $footer			= false;
