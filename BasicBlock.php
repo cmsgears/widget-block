@@ -1,10 +1,26 @@
 <?php
+/**
+ * This file is part of CMSGears Framework. Please view License file distributed
+ * with the source code for license details.
+ *
+ * @link https://www.cmsgears.org/
+ * @copyright Copyright (c) 2015 VulpineCode Technologies Pvt. Ltd.
+ */
+
 namespace cmsgears\widgets\block;
 
 // Yii Imports
 use yii\helpers\Html;
 
-class BasicBlock extends \cmsgears\core\common\base\Widget {
+// CMG Imports
+use cmsgears\core\common\base\Widget;
+
+/**
+ * Block forms a part of page either vertically or horizontally.
+ *
+ * @since 1.0.0
+ */
+class BasicBlock extends Widget {
 
 	// Variables ---------------------------------------------------
 
@@ -20,44 +36,56 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 
 	// Public -----------------
 
+	public $wrap	= true;
+	public $options = [ 'class' => 'block' ];
+	public $buffer	= true;
+
 	// Background
-	public $bkg					= false;
-	public $fixedBkg			= false;
-	public $scrollBkg			= false;
-	public $parallaxBkg			= false;
-	public $bkgUrl				= null;
-	public $bkgClass			= null;
+	public $bkg			= false;
+	public $fixedBkg	= false;
+	public $scrollBkg	= false;
+	public $parallaxBkg	= false;
+	public $bkgUrl		= null;
+	public $bkgClass	= null;
 
 	// Texture
-	public $texture				= false;
-	public $textureUrl			= null;
-	public $textureClass		= null;
+	public $texture			= false;
+	public $textureClass	= null;
 
-	// Block to cover whole area
-	public $maxCover			= false;
-	public $maxCoverContent		= null;
-	public $maxCoverClass		= null;
-
-	// Block Header
-	public $icon				= false;
-	public $iconClass			= null;
-	public $iconImage			= null;
+	// Max cover on top of block content
+	public $maxCover		= false;
+	public $maxCoverContent	= null;
+	public $maxCoverClass	= null;
 
 	// Block Header
-	public $header				= false;
-	public $headerContent		= null;
-	public $headerClass			= null;
+	public $header			= false;
+	public $headerIcon		= false;
+	public $headerIconClass	= null;
+	public $headerIconUrl	= null;
+	public $headerTitle		= null;
+	public $headerInfo		= null;
+	public $headerContent	= null;
 
 	// Block Content
-	public $title				= null;
-	public $description			= null;
-	public $contentWrapClass	= null;
 	public $content				= false;
+	public $contentTitle		= null;
+	public $contentInfo			= null;
+	public $contentSummary		= null;
 	public $contentData			= null;
-	public $contentClass		= '';
 
-	// Additional content placed below content box
-	public $extraContent		= null;
+	public $contentClass		= null;
+	public $contentDataClass	= null;
+	public $contentBufferClass	= null;
+	public $boxWrapClass		= null;
+
+	// Block Footer
+	public $footer			= false;
+	public $footerIcon		= false;
+	public $footerIconClass	= null;
+	public $footerIconUrl	= null;
+	public $footerTitle		= null;
+	public $footerInfo		= null;
+	public $footerContent	= null;
 
 	// Protected --------------
 
@@ -83,32 +111,11 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 
 	// Yii parent classes --------------------
 
-	// yii\base\Widget
-
-    public function run() {
-
-		$content = ob_get_clean();
-
-		if( $this->autoload ) {
-
-			// Render autoload widget
-			return $this->renderAutoload( [ 'content' => $content ] );
-		}
-
-		// Render the widget
-        return $this->renderWidget( [ 'content' => $content ] );
-    }
-
 	// CMG interfaces ------------------------
 
 	// CMG parent classes --------------------
 
     public function renderWidget( $config = [] ) {
-
-		if( isset( $config[ 'content' ] ) && strlen( $config[ 'content' ] ) > 0 ) {
-
-			$this->contentData = $config[ 'content' ];
-		}
 
 		// Default background class defined in css as - .bkg-block { background-image: url(<image url>) }
 		if( $this->bkg && !isset( $this->bkgUrl ) && !isset( $this->bkgClass ) ) {
@@ -118,7 +125,13 @@ class BasicBlock extends \cmsgears\core\common\base\Widget {
 
 		$widgetHtml = $this->render( $this->template, [ 'widget' => $this ] );
 
-        return Html::tag( 'section', $widgetHtml, $this->options );
+		// Wrap the view
+		if( $this->wrap ) {
+
+			return Html::tag( $this->wrapper, $widgetHtml, $this->options );
+		}
+
+		return $widgetHtml;
     }
 
 	public function renderAutoload( $config = [] ) {
