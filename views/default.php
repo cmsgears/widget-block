@@ -18,6 +18,10 @@ $bkgStyle = !empty( $widget->bkgUrl ) ? "style=\"background-image:url($widget->b
 	<div class="block-bkg-parallax <?= $widget->bkgClass ?>" <?= $bkgStyle ?>></div>
 <?php } ?>
 
+<?php if( $widget->bkgVideo && !empty( $widget->bkgVideoSrc ) ) { ?>
+	<?= $widget->bkgVideoSrc ?>
+<?php } ?>
+
 <?php if( $widget->texture ) { ?>
 	<div class="texture <?= $widget->textureClass ?>"></div>
 <?php } ?>
@@ -73,7 +77,7 @@ $bkgStyle = !empty( $widget->bkgUrl ) ? "style=\"background-image:url($widget->b
 					<?= $widget->contentData ?>
 				</div>
 			<?php } ?>
-			<?php if( isset( $widget->buffer ) ) { ?>
+			<?php if( isset( $widget->contentBuffer ) ) { ?>
 				<div class="block-content-buffer <?= $widget->contentBufferClass ?>">
 					<?= $widget->bufferData ?>
 				</div>
