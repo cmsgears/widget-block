@@ -12,15 +12,12 @@ namespace cmsgears\widgets\block;
 // Yii Imports
 use yii\helpers\Html;
 
-// CMG Imports
-use cmsgears\core\common\base\Widget;
-
 /**
  * Block forms a part of page either vertically or horizontally.
  *
  * @since 1.0.0
  */
-class BasicBlock extends Widget {
+class BasicBlock extends \cmsgears\core\common\base\Widget {
 
 	// Variables ---------------------------------------------------
 
@@ -47,6 +44,8 @@ class BasicBlock extends Widget {
 	public $parallaxBkg	= false;
 	public $bkgUrl		= null;
 	public $bkgClass	= null;
+	public $bkgVideo	= false;
+	public $bkgVideoSrc	= null;
 
 	// Texture
 	public $texture			= false;
@@ -67,16 +66,19 @@ class BasicBlock extends Widget {
 	public $headerContent	= null;
 
 	// Block Content
-	public $content				= false;
-	public $contentTitle		= null;
-	public $contentInfo			= null;
-	public $contentSummary		= null;
-	public $contentData			= null;
+	public $content			= false;
+	public $contentTitle	= null;
+	public $contentInfo		= null;
+	public $contentSummary	= null;
+	public $contentData		= null;
 
 	public $contentClass		= null;
 	public $contentDataClass	= null;
-	public $contentBufferClass	= null;
-	public $boxWrapClass		= null;
+
+	public $contentBuffer	= false;
+	public $bufferData		= null;
+
+	public $contentBufferClass = null;
 
 	// Block Footer
 	public $footer			= false;
@@ -86,6 +88,11 @@ class BasicBlock extends Widget {
 	public $footerTitle		= null;
 	public $footerInfo		= null;
 	public $footerContent	= null;
+
+	// Elements Wrapper
+	public $boxWrapClass	= null;
+	public $boxWrapper		= null;
+	public $boxClass		= null;
 
 	// Protected --------------
 
